@@ -81,15 +81,15 @@ public class GeneratorController {
                             break;
                     }
                 }
-                if ((fioWidth + dateWidth + numberWidth + 10) > pageWidth)
-                    throw new CustomException("Fio,Date and number cant be fitted with page width.\nPlease check settings");
-                else {
-                    //If in settings left empty space it will be used by fio field
-                    fioWidth = pageWidth - 10 - fioWidth - dateWidth;
-                }
-                if (pageHeight < 3)
-                    throw new CustomException("Page Height is to small\nPlease check settings");
             }
+            if ((fioWidth + dateWidth + numberWidth + 10) > pageWidth)
+                throw new CustomException("Fio,Date and number cant be fitted with page width.\nPlease check settings");
+            else {
+                //If in settings left empty space it will be used by fio field
+                fioWidth = pageWidth - 10 - numberWidth - dateWidth;
+            }
+            if (pageHeight < 3)
+                throw new CustomException("Page Height is to small\nPlease check settings");
         } catch (ParserConfigurationException e) {
             throw new CustomException("Parser Configuration Exception occurred");
         } catch (SAXException e) {
